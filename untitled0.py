@@ -38,7 +38,7 @@ def Pp(x,a=a,l=l):
 def Xp(p,m=1):
     return p/m
 
-def trajectory(x0,p0,N,dt):
+def trajectory(x0,p0,label = None, N=1e5,dt=1e-4, ):
     
     tx1 = [x0]
     tp1 = [p0]
@@ -51,14 +51,51 @@ def trajectory(x0,p0,N,dt):
         tx1.append(Xp(tp1[i-1]*dt + tx1[i-1]))
     
     
+    if(label==None):
+        label = r'$p_0 = {:0.1f}$, x_0 = {:0.2f}'.format(p0,x0/x3)
+    
     tp = np.array(tp1)
     tx = np.array(tx1)
     # plt.figure()
-    plt.plot(tx,tp)
+    plt.plot(tx/x3,tp, label = label)
 
     return tx,tp, tmax
-tx,tp,tt = trajectory(0,0.1,1e5,1e-4)
-tx,tp,tt = trajectory(np.sqrt(a*0.5000/l),0,1e5,1e-4)
-tx,tp,tt = trajectory(-np.sqrt(a*0.5000/l),0,1e5,1e-4)
-tx,tp,tt = trajectory(1.01*np.sqrt(a*0.5000/l),0,1e5,1e-4)
+tx,tp,tt = trajectory(0,0.1)
+#tx,tp,tt = trajectory(np.sqrt(a*0.5000/l),0,1e5,1e-4)
+#tx,tp,tt = trajectory(-np.sqrt(a*0.5000/l),0,1e5,1e-4)
+tx,tp,tt = trajectory(1.5*np.sqrt(a*0.5000/l),0)
+#tx,tp,tt = trajectory(1.3*np.sqrt(a*0.5000/l),0,1e5,1e-4)
+#tx,tp,tt = trajectory(-1.3*np.sqrt(a*0.5000/l),0,1e5,1e-4)
+#tx,tp,tt = trajectory(-1.2*np.sqrt(a*0.5000/l),0)
+tx,tp,tt = trajectory(-np.sqrt(a*0.5000/l),0.2)
+#tx,tp,tt = trajectory(-1.1*np.sqrt(a*0.5000/l),0,1e5,1e-4)
+tx,tp,tt = trajectory(-0.5*np.sqrt(a*0.5000/l),0)
+tx,tp,tt = trajectory(0.001,0)
+plt.scatter([1,-1,0],[0,0,0], label = 'Puntos de equilibrio', color ='magenta')
+plt.legend(bbox_to_anchor=(1, 0.8))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
