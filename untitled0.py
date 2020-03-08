@@ -80,7 +80,7 @@ plt.legend(bbox_to_anchor=(1, 0.8))
 
 
 
-
+plt.savefig("graph.png")
 
 
 
